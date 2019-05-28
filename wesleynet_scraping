@@ -1,0 +1,38 @@
+from requests import get
+url = 'http://www.wesleynet.com/jthailand/japancompany.php?list=A'
+response = get(url)
+print(response.text[:500])
+
+#This will not run on online IDE
+import requests
+from bs4 import BeautifulSoup
+
+URL = "http://www.wesleynet.com/jthailand/japancompany.php?list=A"
+r = requests.get(URL)
+
+soup = BeautifulSoup(r.content, 'html5lib')
+print(soup.prettify())
+
+quotes=[]  # a list to store quotes
+
+table = soup.find('div',class = {'alpha'})
+
+
+tb=(soup.find_all(class_="alpha"))
+<class_="alpha">
+
+class="results secondary"
+
+soup.find("class_", {"alpha": "a href"})
+
+import requests
+from bs4 import BeautifulSoup
+
+url = "http://www.wesleynet.com/jthailand/japancompany.php?list=A"
+page = requests.get(url)
+soup = BeautifulSoup(page.content, 'html.parser')
+tb = soup.find_all('class="alpha"')
+
+for link in tb.find_all('b'):
+    name = link.find('a')
+    print(name.get_text('title'))
