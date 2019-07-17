@@ -1,0 +1,35 @@
+from requests import get
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import re
+
+
+page = requests.get ('https://www.boi.go.th/index.php?page=company_detail&COM_ID={ID}&HP_ID={ID}&language_search=English',verify=False)
+for ID in range(560033, 560040):
+        requests.get(page.format(ID=ID))
+
+soup = BeautifulSoup(page.content, 'html.parser')
+tb=(soup.find_all(class_="tableframe"))
+print(tb)
+
+
+
+url_list = ['https://www.boi.go.th/index.php?page=company_detail&COM_ID=561588&HP_ID=561588&language_search=English','https://www.boi.go.th/index.php?page=company_detail&COM_ID=561768&HP_ID=561768&language_search=English','https://www.boi.go.th/index.php?page=company_detail&COM_ID=561801&HP_ID=561801&language_search=English',verify=False]
+for link in url_list:
+    r = requests.get(link)
+
+from requests import get
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+import re
+from urllib3 import PoolManager
+http = PoolManager()
+
+page = "https://www.boi.go.th/index.php?page=company_detail&COM_ID={ID}&HP_ID={ID}&language_search=English"
+for ID in range(560033, 560038):
+        requests.get(page.format(ID=ID),verify=False)
+soup = BeautifulSoup(page.content, "html.parser")
+tb=(soup.find_all(class_="tableframe"))
+print(tb)
