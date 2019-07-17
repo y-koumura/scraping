@@ -24,12 +24,10 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import re
-from urllib3 import PoolManager
-http = PoolManager()
 
 page = "https://www.boi.go.th/index.php?page=company_detail&COM_ID={ID}&HP_ID={ID}&language_search=English"
 for ID in range(560033, 560038):
         requests.get(page.format(ID=ID),verify=False)
-soup = BeautifulSoup(page.content, "html.parser")
-tb=(soup.find_all(class_="tableframe"))
+soup = BeautifulSoup(page, "html.parser")
+print(soup.find_all(class_='tableframe'))
 print(tb)
